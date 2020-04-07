@@ -4,15 +4,15 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion SDKVersions.compile_sdk
+    buildToolsVersion SDKVersions.build_tool_versioin
 
     defaultConfig {
-        applicationId "com.zistus.multimodule"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        applicationId ApplicationId.application_id
+        minSdkVersion SDKVersions.min_sdk
+        targetSdkVersion SDKVersions.target_sdk
+        versionCode Releases.version_code
+        versionName Releases.version_name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -3,27 +3,24 @@ import Versions.otpViewVersion
 import Versions.prefix_version
 
 object ApplicationId {
-    val application_id = "com.ajocard.app"
+    val application_id = "com.zistus.multimodule"
 }
 
 object Releases {
-    val version_code = 100003
-    val version_name = "1.2.2"
+    val version_code = 1
+    val version_name = "0.0.1"
 }
 
 object Modules {
-    val domain = ":domain"
-    val data = ":data"
-    val presentation = ":presentation"
-    val poslib_commons = ":poslib-commons"
-    val cognito = ":cognito"
+    val app = ":app"
     val core = ":core"
 }
 
 object SDKVersions {
     val min_sdk = 21
     val target_sdk = 28
-    var compile_sdk = 28
+    var compile_sdk = 29
+    val build_tool_versioin = "29.0.2"
 }
 
 
