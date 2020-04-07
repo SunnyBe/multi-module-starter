@@ -1,2 +1,2 @@
 rootProject.name='Multi Module'
-include ':app'
+include ':app', ':buildSrc'
