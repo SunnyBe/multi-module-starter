@@ -1,17 +1,18 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion SDKVersions.compile_sdk
+    buildToolsVersion SDKVersions.build_tool_versioin
 
     defaultConfig {
-        applicationId "com.zistus.multimodule"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        applicationId ApplicationId.application_id
+        minSdkVersion SDKVersions.min_sdk
+        targetSdkVersion SDKVersions.target_sdk
+        versionCode Releases.version_code
+        versionName Releases.version_name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -27,11 +28,23 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation Deps.kotlin_jdk
+    // Support
+    implementation SupportLibraries.appcompat
+    implementation SupportLibraries.core
+    implementation SupportLibraries.constraintLayout
+
+    // Dagger
+    implementation Deps.dagger
+    implementation Deps.daggerAndroid
+    implementation Deps.daggerAndroidSupport
+    kapt Deps.daggerCompiler
+    kapt Deps.daggerAndroidProcessor
+
+    // Other
+    implementation Deps.timber
+
+    testImplementation TestDeps.junit
+    androidTestImplementation TestDeps.junit_x
+    androidTestImplementation TestDeps.espresso_core
 }
