@@ -33,6 +33,7 @@ dependencies {
     implementation SupportLibraries.appcompat
     implementation SupportLibraries.core
     implementation SupportLibraries.constraintLayout
+    implementation SupportLibraries.annotation
 
     // UI
     implementation SupportLibraries.materialDesign
