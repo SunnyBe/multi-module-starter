@@ -7,9 +7,11 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
+import javax.inject.Singleton
 
+@Singleton
 @Component(modules = [AndroidInjectionModule::class, CoreModule::class])   // Include the modules and dependencies
-interface CoreComponent: AndroidInjector<MyApplication> {
+interface CoreComponent : AndroidInjector<MyApplication> {
 
     @Component.Factory
     interface Factory {
