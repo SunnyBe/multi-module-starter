@@ -34,6 +34,9 @@ dependencies {
     implementation SupportLibraries.core
     implementation SupportLibraries.constraintLayout
 
+    // UI
+    implementation SupportLibraries.materialDesign
+
     // Dagger
     implementation Deps.dagger
     implementation Deps.daggerAndroid
@@ -47,4 +50,6 @@ dependencies {
     testImplementation TestDeps.junit
     androidTestImplementation TestDeps.junit_x
     androidTestImplementation TestDeps.espresso_core
+
+    implementation project(Modules.core)
 }

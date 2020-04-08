@@ -1,10 +1,12 @@
 package com.zistus.core
 
+import com.zistus.core.di.BaseFeatureInjector
 import com.zistus.core.di.CoreComponent
 import com.zistus.core.di.DaggerCoreComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import dagger.android.DispatchingAndroidInjector
+import timber.log.Timber
 import javax.inject.Inject
 
 class MyApplication : DaggerApplication() {
@@ -15,19 +17,30 @@ class MyApplication : DaggerApplication() {
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
+    // List of injected modules extending the base feature Injector
+    private val injectedModules = mutableSetOf<BaseFeatureInjector>()
+
     private val moduleAndroidInjectors = mutableListOf<DispatchingAndroidInjector<Any>>()
 
-    val androidInjector = AndroidInjector<Any>(::processAndroidInjector)
+    private val androidInjector = AndroidInjector<Any>(::processAndroidInjector)
 
+    // Android injector callback when an injector instance is available
     private fun processAndroidInjector(instance: Any) {
-        if (dispatchingAndroidInjector.maybeInject(instance)) {
-            return
-        }
+        // Check if specified instance of injector is part of the the module android injectors
+        if (dispatchingAndroidInjector.maybeInject(instance)) return
         moduleAndroidInjectors.forEach{ injector->
             if (injector.maybeInject(instance)) return
         }
 
         throw IllegalStateException("$instance Injector not found.")
+    }
+
+    // Add the specified feature injector to the list of injectors
+    fun addModuleInjector(featureInjector: BaseFeatureInjector) {
+        if (injectedModules.contains(featureInjector)) return
+        featureInjector.inject(this)
+        moduleAndroidInjectors.add(featureInjector.androidInjector())
+        injectedModules.add(featureInjector)
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> = coreComponent
