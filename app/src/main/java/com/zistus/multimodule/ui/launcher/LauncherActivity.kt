@@ -21,7 +21,6 @@ class LauncherActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launcher)
         Toast.makeText(applicationContext, "Entry: $testString", Toast.LENGTH_LONG).show()
-
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("${Urls.AppScheme}home"))
         startActivity(intent)
     }

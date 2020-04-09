@@ -36,6 +36,7 @@ dependencies {
     implementation SupportLibraries.annotation
     // UI
     implementation SupportLibraries.materialDesign
+
     // Dagger
     implementation Deps.dagger
     implementation Deps.daggerAndroid
