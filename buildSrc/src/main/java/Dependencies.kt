@@ -50,6 +50,7 @@ object Versions {
 
     val pagingVersion = "2.1.2"
     val timber_version = "4.7.1"
+    val deeplink_version = "4.1.0"
     val currencyEditTextVersion = "2.0.2"
     val circleImageVersion = "3.0.0"
     val otpViewVersion = "2.0.3"
@@ -151,6 +152,8 @@ object Deps {
     val anko_designs = "org.jetbrains.anko:anko-design:${Versions.anko_version}"
 
     val timber = "com.jakewharton.timber:timber:${Versions.timber_version}"
+    val deepLinkDispatch = "com.airbnb:deeplinkdispatch:${Versions.deeplink_version}"
+    val deepLinkDispatchProcessor = "com.airbnb:deeplinkdispatch-processor:${Versions.deeplink_version}"
 
     val currencyEditText = "com.github.BlacKCaT27:CurrencyEditText:$currencyEditTextVersion"
     val circleImage = "de.hdodenhof:circleimageview:${Versions.circleImageVersion}"

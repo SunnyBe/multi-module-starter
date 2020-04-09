@@ -33,6 +33,10 @@ dependencies {
     implementation SupportLibraries.appcompat
     implementation SupportLibraries.core
     implementation SupportLibraries.constraintLayout
+    implementation SupportLibraries.annotation
+
+    // UI
+    implementation SupportLibraries.materialDesign
 
     // Dagger
     implementation Deps.dagger
@@ -43,6 +47,8 @@ dependencies {
 
     // Other
     implementation Deps.timber
+    implementation Deps.deepLinkDispatch
+    kapt Deps.deepLinkDispatchProcessor
 
     testImplementation TestDeps.junit
     androidTestImplementation TestDeps.junit_x
