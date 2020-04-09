@@ -23,6 +23,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
 
 }
 
@@ -34,9 +45,14 @@ dependencies {
     implementation SupportLibraries.core
     implementation SupportLibraries.constraintLayout
     implementation SupportLibraries.annotation
+    implementation SupportLibraries.fragment
 
     // UI
     implementation SupportLibraries.materialDesign
+
+    implementation Deps.lifecycle_ext
+    implementation Deps.lifecycle_view_model
+    kapt Deps.lifecycle_compiler
 
     // Dagger
     implementation Deps.dagger
@@ -44,6 +60,9 @@ dependencies {
     implementation Deps.daggerAndroidSupport
     kapt Deps.daggerCompiler
     kapt Deps.daggerAndroidProcessor
+    // Reactive
+    implementation Deps.coroutine
+    implementation Deps.coroutine_android
 
     // Other
     implementation Deps.timber
