@@ -113,6 +113,7 @@ object Deps {
     val room_rxjava = "androidx.room:room-rxjava2:${Versions.room_version}"
     val lifecycle_runtime = "android.arch.lifecycle:runtime:${Versions.lifecycle_version}"
     val lifecycle_ext = "android.arch.lifecycle:extensions:${Versions.lifecycle_version}"
+    val lifecycle_view_model = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}"
     val lifecycle_compiler = "android.arch.lifecycle:compiler:${Versions.lifecycle_version}"
     val reactiveStreams = "androidx.lifecycle:lifecycle-reactivestreams:${Versions.reactiveStreamsVersion}"
 
