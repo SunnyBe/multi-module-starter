@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -36,9 +37,13 @@ abstract class BaseFragmentNav<FragmentBinding: ViewDataBinding, VM : BaseViewMo
         return fragmentBinding.root
     }
 
-//    fun navigate() {
-//        findNavController().navigate()
-//    }
+    fun navigateFragment(@IdRes destination: Int) {
+        findNavController().navigate(destination)
+    }
+
+    fun navigateFragment(@IdRes destination: Int, bundle: Bundle) {
+        findNavController().navigate(destination, bundle)
+    }
 
     fun <T> LiveData<T>.observe(block: (T) -> Unit) = observe(this@BaseFragmentNav, Observer {
         block(it)

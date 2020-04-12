@@ -2,7 +2,6 @@ package com.zistus.multimodule.ui.home
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.fragment.findNavController
 import com.zistus.core.entity.DataState
 import com.zistus.core.ui.BaseFragmentNav
 import com.zistus.multimodule.R
@@ -24,7 +23,7 @@ class HomeFragment: BaseFragmentNav<FragmentHomeBinding, HomeViewModel>() {
             }
         }
         testButton?.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_subHomeFragment)
+            navigateFragment(R.id.action_homeFragment_to_subHomeFragment)
         }
     }
 }
