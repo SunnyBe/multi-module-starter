@@ -1,5 +1,6 @@
 package com.zistus.multimodule.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import com.zistus.core.di.BaseFeatureInjector
 import com.zistus.core.ui.BaseActivityNav
@@ -25,5 +26,6 @@ class HomeActivity : BaseActivityNav<HomeViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        testLabel?.text = "HomeActivity Intent data: $param"
     }
 }
