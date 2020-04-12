@@ -18,10 +18,12 @@ abstract class BaseViewModel: ViewModel() {
         _intentNavigation.value = intent
     }
 
+    // Navigate to the next activity via Intent using url
     fun navigate(url: String) {
         _intentNavigation.value = Intent(Intent.ACTION_VIEW, Uri.parse(url))
     }
 
+    // Append screen path and Navigate using deep-link
     fun navigateScreen(screenPath: String) {
         navigate("${Urls.AppScheme}$screenPath")
     }

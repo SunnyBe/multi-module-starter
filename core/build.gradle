@@ -40,6 +40,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Deps.kotlin_jdk
+    implementation Deps.kotlin_stdlib
     // Support
     implementation SupportLibraries.appcompat
     implementation SupportLibraries.core
@@ -52,6 +53,7 @@ dependencies {
 
     implementation Deps.lifecycle_ext
     implementation Deps.lifecycle_view_model
+    implementation Deps.lifecycle_livedata
     kapt Deps.lifecycle_compiler
 
     // Dagger
