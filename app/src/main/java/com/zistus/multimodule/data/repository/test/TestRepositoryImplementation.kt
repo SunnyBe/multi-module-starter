@@ -1,5 +1,6 @@
 package com.zistus.multimodule.data.repository.test
 
+import com.zistus.core.entity.DataState
 import com.zistus.multimodule.data.api.test.TestApiInteractor
 import com.zistus.multimodule.data.db.test.TestDbInteractor
 import com.zistus.multimodule.domain.test.TestEntity
@@ -12,7 +13,11 @@ class TestRepositoryImplementation(
     private val dbSource: TestDbInteractor
 ) :
     TestRepository {
-    override suspend fun fetchUsers(): List<TestEntity.User>  = withContext(Dispatchers.IO) {
-        apiSource.users().map { it.toEntity() }
+    override suspend fun fetchUsers(): DataState<List<TestEntity.User>>  = withContext(Dispatchers.IO) {
+        try {
+            DataState.Success(apiSource.users().map { it.toEntity() })
+        } catch (ex: Throwable) {
+            DataState.Error(ex, null) as DataState<List<TestEntity.User>>
+        }
     }
 }

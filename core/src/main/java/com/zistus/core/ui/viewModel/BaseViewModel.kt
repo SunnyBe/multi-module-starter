@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.zistus.core.util.misc.ErrorManager
 import com.zistus.core.util.misc.Urls
 
 /**
@@ -20,6 +21,10 @@ abstract class BaseViewModel: ViewModel() {
     // Error Live data
     private val _errorState = MutableLiveData<Throwable>()
     val errorState: LiveData<Throwable> get() = _errorState
+
+    fun renderError(error: ErrorManager) {
+        _errorState.value = error
+    }
 
     fun navigate(intent: Intent) {
         _intentNavigation.value = intent
