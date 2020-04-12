@@ -23,8 +23,6 @@ class LauncherActivity : BaseActivity<ActivityLauncherBinding, LauncherViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Toast.makeText(applicationContext, "Entry: $testString", Toast.LENGTH_LONG).show()
-        viewModel.endSplash.observe(this, Observer {
-            finish()
-        })
+        viewModel.endSplash.observe{finish()}
     }
 }

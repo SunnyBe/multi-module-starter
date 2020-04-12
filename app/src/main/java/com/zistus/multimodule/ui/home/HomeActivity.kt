@@ -1,10 +1,12 @@
 package com.zistus.multimodule.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import com.zistus.core.di.BaseFeatureInjector
 import com.zistus.core.ui.BaseActivity
 import com.zistus.core.util.annotation.AppDeepLink
 import com.zistus.core.util.annotation.WebDeepLink
+import com.zistus.core.util.ext.intentExtra
 import com.zistus.multimodule.R
 import com.zistus.multimodule.databinding.ActivityHomeBinding
 import com.zistus.multimodule.di.AppFeatureInjector
@@ -24,11 +26,11 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     @Inject
     lateinit var testString: String
 
-    //    private val param by intentExtra<String>()
-    private val param = intent.extras?.getString("param") ?: ""
+    private val param by intentExtra<Any>("param")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        testLabel?.text = "The Current page is $param"
+        testLabel?.text = "HomeActivity Intent data: $param"
+
     }
 }
