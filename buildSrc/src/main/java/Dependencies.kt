@@ -25,13 +25,13 @@ object SDKVersions {
 
 
 object Versions {
-    val kotlin = "1.3.30"
+    val kotlin = "1.3.71"
     val gradle = "3.2.1"
     val realm = "5.3.0"
-    val retrofit = "2.4.0"
+    val retrofit = "2.6.0"
     val retrofit_logger = "3.10.0"
     val android_arch = "1.1.1"
-    val lifecycle_version = "2.1.0"
+    val lifecycle_version = "2.2.0"
     val navigation_architecture = "2.0.0"
     val room_version = "2.2.5"
     val fragment_version = "1.2.0"
@@ -113,6 +113,7 @@ object Deps {
     val room_rxjava = "androidx.room:room-rxjava2:${Versions.room_version}"
     val lifecycle_runtime = "android.arch.lifecycle:runtime:${Versions.lifecycle_version}"
     val lifecycle_ext = "android.arch.lifecycle:extensions:${Versions.lifecycle_version}"
+    val lifecycle_livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}"
     val lifecycle_view_model = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}"
     val lifecycle_compiler = "android.arch.lifecycle:compiler:${Versions.lifecycle_version}"
     val reactiveStreams = "androidx.lifecycle:lifecycle-reactivestreams:${Versions.reactiveStreamsVersion}"
