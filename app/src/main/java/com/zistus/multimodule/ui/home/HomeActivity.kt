@@ -2,18 +2,16 @@ package com.zistus.multimodule.ui.home
 
 import android.os.Bundle
 import com.zistus.core.di.BaseFeatureInjector
-import com.zistus.core.ui.BaseActivity
+import com.zistus.core.ui.BaseActivityNav
 import com.zistus.core.util.annotation.AppDeepLink
 import com.zistus.core.util.annotation.WebDeepLink
 import com.zistus.core.util.ext.intentExtra
 import com.zistus.multimodule.R
-import com.zistus.multimodule.databinding.ActivityHomeBinding
 import com.zistus.multimodule.di.AppFeatureInjector
-import kotlinx.android.synthetic.main.activity_home.*
 
 @WebDeepLink("home/{param}")
 @AppDeepLink("home/{param}")
-class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
+class HomeActivity : BaseActivityNav<HomeViewModel>() {
 
     override val layoutResId: Int = R.layout.activity_home
 
@@ -27,6 +25,5 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        testLabel?.text = "HomeActivity Intent data: $param"
     }
 }

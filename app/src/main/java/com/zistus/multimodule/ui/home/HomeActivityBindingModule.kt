@@ -14,13 +14,16 @@ abstract class HomeActivityBindingModule {
     @ContributesAndroidInjector(modules = [HomeViewModelBindingModule::class, HomeModule::class])
     abstract fun contributeHomeActivity(): HomeActivity
 
+
+    @ContributesAndroidInjector(modules = [HomeViewModelBindingModule::class, HomeModule::class])
+    abstract fun contributeHomeFragment(): HomeFragment
+
     @Module
     abstract class HomeViewModelBindingModule {
         @Binds
         @IntoMap
         @ViewModelKey(HomeViewModel::class)
         abstract fun bindLauncherViewModel(homeViewModel: HomeViewModel): ViewModel
-
     }
 
     @Module
