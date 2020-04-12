@@ -1,7 +1,6 @@
 package com.zistus.core.ui
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -11,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.zistus.core.MyApplication
 import com.zistus.core.di.BaseFeatureInjector
 import dagger.android.support.DaggerAppCompatActivity
+import timber.log.Timber
 import javax.inject.Inject
 
 abstract class BaseActivity<Binding: ViewDataBinding, VM: BaseViewModel>: DaggerAppCompatActivity() {
@@ -33,6 +33,10 @@ abstract class BaseActivity<Binding: ViewDataBinding, VM: BaseViewModel>: Dagger
         super.onCreate(savedInstanceState)
         setContentView(layoutResId)
         binding.lifecycleOwner = this
+        viewModel.intentNavigation.observe {
+            Timber.d("Navigate ${it.data}")
+            startActivity(it)
+        }
     }
 
     fun <T> LiveData<T>.observe(block: (T) -> Unit) = observe(this@BaseActivity, Observer {
