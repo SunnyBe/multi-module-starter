@@ -1,7 +1,7 @@
 package com.zistus.multimodule.ui.launcher
 
 import androidx.lifecycle.liveData
-import com.zistus.core.ui.BaseViewModel
+import com.zistus.core.ui.viewModel.BaseViewModel
 import kotlinx.coroutines.delay
 import javax.inject.Inject
 

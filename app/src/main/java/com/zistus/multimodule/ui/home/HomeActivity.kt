@@ -1,6 +1,5 @@
 package com.zistus.multimodule.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import com.zistus.core.di.BaseFeatureInjector
 import com.zistus.core.ui.BaseActivity
@@ -11,7 +10,6 @@ import com.zistus.multimodule.R
 import com.zistus.multimodule.databinding.ActivityHomeBinding
 import com.zistus.multimodule.di.AppFeatureInjector
 import kotlinx.android.synthetic.main.activity_home.*
-import javax.inject.Inject
 
 @WebDeepLink("home/{param}")
 @AppDeepLink("home/{param}")
@@ -23,14 +21,12 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
     override val featureInjector: BaseFeatureInjector = AppFeatureInjector()
 
-    @Inject
-    lateinit var testString: String
+    override fun getNavControllerId(): Int = R.id.nav_controller_view_tag // Todo Use the right nav
 
     private val param by intentExtra<Any>("param")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         testLabel?.text = "HomeActivity Intent data: $param"
-
     }
 }
