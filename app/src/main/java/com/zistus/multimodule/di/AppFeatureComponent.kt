@@ -15,7 +15,9 @@ import dagger.android.AndroidInjectionModule
         AndroidInjectionModule::class,
         HomeActivityBindingModule::class,
         LauncherActivityBindingModule::class,
-        ViewModelModule::class
+        ViewModelModule::class,
+        NetworkModule::class,
+        DbModule::class
     ]
 )
 interface AppFeatureComponent {

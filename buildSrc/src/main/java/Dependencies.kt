@@ -109,8 +109,10 @@ object Deps {
     val retrofit_http_logger = "com.squareup.okhttp3:logging-interceptor:${Versions.retrofit_logger}"
 
     val room = "androidx.room:room-runtime:${Versions.room_version}"
+    val roomKtx = "androidx.room:room-ktx:${Versions.room_version}"
     val room_compiler = "androidx.room:room-compiler:${Versions.room_version}"
     val room_rxjava = "androidx.room:room-rxjava2:${Versions.room_version}"
+
     val lifecycle_runtime = "android.arch.lifecycle:runtime:${Versions.lifecycle_version}"
     val lifecycle_ext = "android.arch.lifecycle:extensions:${Versions.lifecycle_version}"
     val lifecycle_livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}"
@@ -129,7 +131,6 @@ object Deps {
 
     var coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine_version}"
     var coroutine_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine_version}"
-
 
     val calligraphy = "uk.co.chrisjenx:calligraphy:${Versions.calligraphy}"
     val pager_indicator = "com.romandanylyk:pageindicatorview:${Versions.pager_indicator}"

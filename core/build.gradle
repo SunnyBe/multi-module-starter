@@ -22,6 +22,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
     dataBinding {
         enabled = true
@@ -53,12 +57,19 @@ dependencies {
     // Navigation
     implementation Deps.navigation
     implementation Deps.nav_fragment
-
+    // Network
+    implementation Deps.retrofit
+    implementation Deps.retrofit_gson_converter
+    implementation Deps.retrofit_http_logger
+    // Room
+    implementation Deps.room
+    implementation Deps.roomKtx
+    kapt Deps.room_compiler
+    // Lifecycler
     implementation Deps.lifecycle_ext
     implementation Deps.lifecycle_view_model
     implementation Deps.lifecycle_livedata
     kapt Deps.lifecycle_compiler
-
     // Dagger
     implementation Deps.dagger
     implementation Deps.daggerAndroid

@@ -21,6 +21,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com\"")
+        }
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com\"")
         }
     }
     
@@ -61,6 +65,14 @@ dependencies {
     // Reactive
     implementation Deps.coroutine
     implementation Deps.coroutine_android
+    // Network
+    implementation Deps.retrofit
+    implementation Deps.retrofit_gson_converter
+    implementation Deps.retrofit_http_logger
+    // Room
+    implementation Deps.room
+    implementation Deps.roomKtx
+    kapt Deps.room_compiler
     // Lifecycle
     implementation Deps.lifecycle_ext
     implementation Deps.lifecycle_view_model
