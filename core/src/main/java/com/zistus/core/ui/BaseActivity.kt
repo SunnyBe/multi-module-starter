@@ -35,7 +35,7 @@ abstract class BaseActivity<Binding: ViewDataBinding?, VM: BaseViewModel>: Dagge
         (application as MyApplication).addModuleInjector(featureInjector)   // Add this
         super.onCreate(savedInstanceState)
         setContentView(layoutResId)
-        binding.lifecycleOwner = this
+        binding?.lifecycleOwner = this
         viewModel.intentNavigation.observe {
             Timber.d("Navigate ${it.data}")
             startActivity(it)
