@@ -2,8 +2,6 @@ package com.zistus.core.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,7 +14,7 @@ import dagger.android.support.DaggerAppCompatActivity
 import timber.log.Timber
 import javax.inject.Inject
 
-abstract class BaseActivity<Binding: ViewDataBinding?, VM: BaseViewModel>: DaggerAppCompatActivity() {
+abstract class BaseActivityNav<VM: BaseViewModel>: DaggerAppCompatActivity() {
 
     abstract val featureInjector: BaseFeatureInjector
 
@@ -24,25 +22,28 @@ abstract class BaseActivity<Binding: ViewDataBinding?, VM: BaseViewModel>: Dagge
 
     abstract val viewModel: VM  // Specify the viewModel for this activity
 
+    abstract fun getNavControllerId(): Int
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     inline fun <reified T : BaseViewModel> viewModel() = viewModels<T> { viewModelFactory }
 
-    private val binding: Binding by lazy { DataBindingUtil.setContentView<Binding>(this, layoutResId) }
+    private val navController: NavController by lazy {
+        findNavController(getNavControllerId())
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         (application as MyApplication).addModuleInjector(featureInjector)   // Add this
         super.onCreate(savedInstanceState)
         setContentView(layoutResId)
-        binding?.lifecycleOwner = this
         viewModel.intentNavigation.observe {
             Timber.d("Navigate ${it.data}")
             startActivity(it)
         }
     }
 
-    fun <T> LiveData<T>.observe(block: (T) -> Unit) = observe(this@BaseActivity, Observer {
+    fun <T> LiveData<T>.observe(block: (T) -> Unit) = observe(this@BaseActivityNav, Observer {
         block(it)
     })
 }
