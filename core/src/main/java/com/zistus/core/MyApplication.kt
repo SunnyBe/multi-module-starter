@@ -1,5 +1,6 @@
 package com.zistus.core
 
+import com.google.android.play.core.splitcompat.SplitCompat
 import com.zistus.core.di.BaseFeatureInjector
 import com.zistus.core.di.CoreComponent
 import com.zistus.core.di.DaggerCoreComponent
@@ -49,5 +50,7 @@ class MyApplication : DaggerApplication() {
     // Set up all applications
     override fun onCreate() {
         super.onCreate()
+        SplitCompat.install(this)
+        coreComponent.inject(this)
     }
 }

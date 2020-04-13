@@ -1,5 +1,6 @@
 package com.zistus.multimodule.di
 
+import com.zistus.core.util.annotation.dagger.FeatureScope
 import com.zistus.multimodule.BuildConfig
 import com.zistus.multimodule.data.api.AppApiService
 import com.zistus.multimodule.data.api.test.TestApiImplementation
@@ -10,14 +11,14 @@ import com.zistus.multimodule.domain.test.TestRepository
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
 
 @Module
 class NetworkModule {
-    @Singleton
+    @FeatureScope
     @Provides
     fun provideAppRetrofit(okHttpClient: OkHttpClient) =
         Retrofit.Builder()
@@ -26,29 +27,37 @@ class NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-    @Singleton
+    @FeatureScope
     @Provides
     fun provideOkHttpClientBuilder(): OkHttpClient.Builder = OkHttpClient.Builder()
 
-    @Singleton
+    @FeatureScope
     @Provides
-    fun provideOkHttpClient(okHttpClientBuilder: OkHttpClient.Builder): OkHttpClient {
-        val client = okHttpClientBuilder
-            .readTimeout(60000, TimeUnit.MICROSECONDS)
-        return client.build()
+    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor()
+
+    @FeatureScope
+    @Provides
+    fun providesOkHttpClient(okHttpClientBuilder: OkHttpClient.Builder,
+                             httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+        if (BuildConfig.DEBUG) {
+            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+            okHttpClientBuilder.addNetworkInterceptor(httpLoggingInterceptor)
+            okHttpClientBuilder.callTimeout(10, TimeUnit.SECONDS)   // Todo Remove or update
+        }
+        return okHttpClientBuilder.build()
     }
 
-    @Singleton
+    @FeatureScope
     @Provides
     fun provideAppApiClient(retrofit: Retrofit): AppApiService =
         retrofit.create(AppApiService::class.java)
 
-    @Singleton
+    @FeatureScope
     @Provides
     fun provideTestApiInteractor(apiService: AppApiService): TestApiInteractor =
         TestApiImplementation(apiService)
 
-    @Singleton
+    @FeatureScope
     @Provides
     fun provideTestRepository(
         testApiInteractor: TestApiInteractor,

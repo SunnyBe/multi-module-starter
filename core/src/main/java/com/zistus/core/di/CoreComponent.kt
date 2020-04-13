@@ -4,6 +4,7 @@ import android.content.Context
 import com.zistus.core.MyApplication
 import com.zistus.core.di.module.CoreModule
 import com.zistus.core.di.module.ViewModelModule
+import com.zistus.core.util.misc.SplitInstallUtil
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -20,4 +21,5 @@ interface CoreComponent : AndroidInjector<MyApplication> {
     }
 
     fun provideApplicationContext(): Context    // Make context available to the core component graph
+    fun provideSplitInstallUtil(): SplitInstallUtil
 }
