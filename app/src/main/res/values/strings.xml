@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Multi Module</string>
+    <string name="testLabel">TestLabel</string>
+    <string name="proceedLabel">Proceed</string>
 </resources>

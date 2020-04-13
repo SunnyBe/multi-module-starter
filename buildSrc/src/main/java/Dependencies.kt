@@ -23,7 +23,6 @@ object SDKVersions {
     val build_tool_versioin = "29.0.2"
 }
 
-
 object Versions {
     val kotlin = "1.3.71"
     val gradle = "3.2.1"
@@ -88,6 +87,7 @@ object Versions {
     val firebase_location_version = "17.0.0"
     val firebase_analytics_version = "17.2.1"
     val gmsVersion = "16.0.0"
+    val play_core_version = "1.7.1"
     val anko_version = "0.10.8"
 }
 
@@ -168,6 +168,7 @@ object Deps {
     val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlyticsVersion}"
     val firebase_auth = "com.google.firebase:firebase-auth:${Versions.firebase_auth_version}"
     val google_location = "com.google.android.gms:play-services-location:${Versions.firebase_location_version}"
+    val playCore = "com.google.android.play:core:${Versions.play_core_version}"
     val firebase_db = "com.google.firebase:firebase-database:${Versions.firebase_db_version}"
     val firebaseAnalytics = "com.google.firebase:firebase-analytics:${Versions.firebase_analytics_version}"
     val googlePlayLocation = "com.google.android.gms:play-services-location:${Versions.gmsVersion}"
