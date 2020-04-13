@@ -1,6 +1,8 @@
 package com.zistus.multimodule.ui.home
 
 import androidx.lifecycle.ViewModel
+import com.zistus.core.di.module.ViewModelModule
+import com.zistus.core.util.annotation.dagger.FeatureScope
 import com.zistus.core.util.annotation.dagger.ViewModelKey
 import dagger.Binds
 import dagger.Module
@@ -11,7 +13,7 @@ import dagger.multibindings.IntoMap
 @Module
 abstract class HomeActivityBindingModule {
 
-    @ContributesAndroidInjector(modules = [HomeViewModelBindingModule::class, HomeModule::class])
+    @ContributesAndroidInjector(modules = [HomeViewModelBindingModule::class, HomeModule::class, ViewModelModule::class])
     abstract fun contributeHomeActivity(): HomeActivity
 
 
@@ -26,7 +28,7 @@ abstract class HomeActivityBindingModule {
         @Binds
         @IntoMap
         @ViewModelKey(HomeViewModel::class)
-        abstract fun bindLauncherViewModel(homeViewModel: HomeViewModel): ViewModel
+        abstract fun bindHomeViewModel(homeViewModel: HomeViewModel): ViewModel
     }
 
     @Module

@@ -25,9 +25,10 @@ android {
         }
         debug {
             buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com/\"")
+            signingConfig android.signingConfigs.debug
         }
     }
-    
+
     dataBinding {
         enabled = true
     }
@@ -40,9 +41,12 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8
     }
 
+    dynamicFeatures = [":feature_authentication"]
+
 }
 
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Deps.kotlin_jdk
     // Support

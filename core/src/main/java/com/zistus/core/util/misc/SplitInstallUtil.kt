@@ -20,6 +20,19 @@ class SplitInstallUtil(context: Context) {
         } else block(null)
     }
 
+    fun installMultiModule(vararg modules: String, block: (Throwable?) -> Unit) {
+        modules.forEach { moduleName ->
+            if (!splitInstallManager.installedModules.contains(moduleName)) {
+                splitInstallManager
+                    .startInstall(
+                        SplitInstallRequest.newBuilder()
+                            .addModule(moduleName)
+                            .build()
+                    ).addOnCompleteListener { block(it.exception) }
+            } else block(null)
+        }
+    }
+
     fun installLanguage(languageCode: String, block: (Throwable?) -> Unit) {
         if (!splitInstallManager.installedLanguages.contains(languageCode)) {
             splitInstallManager
@@ -29,6 +42,10 @@ class SplitInstallUtil(context: Context) {
                         .build()
                 ).addOnCompleteListener { block(it.exception) }
         } else block(null)
+    }
+
+    fun checkInstalledModules(): Set<String>{
+        return splitInstallManager.installedModules
     }
 
 }

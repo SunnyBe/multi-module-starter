@@ -1,0 +1,70 @@
+apply plugin: 'com.android.dynamic-feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion SDKVersions.compile_sdk
+    defaultConfig {
+        applicationId ApplicationId.application_id
+        minSdkVersion SDKVersions.min_sdk
+        targetSdkVersion SDKVersions.target_sdk
+        versionCode Releases.version_code
+        versionName Releases.version_name
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api Deps.kotlin_jdk
+    api Deps.kotlin_stdlib
+    kapt Deps.bindingCompiler
+    // Support
+    api SupportLibraries.appcompat
+    api SupportLibraries.core
+    api SupportLibraries.constraintLayout
+    api SupportLibraries.annotation
+    api SupportLibraries.recyclerview
+    // UI
+    api SupportLibraries.materialDesign
+    // Navigation
+    api Deps.navigation
+    api Deps.nav_fragment
+    // Dagger
+    api Deps.dagger
+    api Deps.daggerAndroid
+    api Deps.daggerAndroidSupport
+    kapt Deps.daggerCompiler
+    kapt Deps.daggerAndroidProcessor
+    // Reactive
+    api Deps.coroutine
+    api Deps.coroutine_android
+    // Network
+    api Deps.retrofit
+    api Deps.retrofit_gson_converter
+    api Deps.retrofit_http_logger
+    // Room
+    api Deps.room
+    api Deps.roomKtx
+    kapt Deps.room_compiler
+    // Lifecycle
+    api Deps.lifecycle_ext
+    api Deps.lifecycle_view_model
+    api Deps.lifecycle_livedata
+    kapt Deps.lifecycle_compiler
+    // Other
+    api Deps.timber
+    api Deps.deepLinkDispatch
+    kapt Deps.deepLinkDispatchProcessor
+
+    testApi TestDeps.junit
+    androidTestApi TestDeps.junit_x
+    androidTestApi TestDeps.espresso_core
+
+    api project(Modules.core)
+    api project(Modules.app)
+}

@@ -1,4 +1,4 @@
-package com.zistus.multimodule.di
+package com.zistus.multimodule.di.module
 
 import com.zistus.core.util.annotation.dagger.FeatureScope
 import com.zistus.multimodule.BuildConfig

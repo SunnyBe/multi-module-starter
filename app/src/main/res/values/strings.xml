@@ -2,4 +2,7 @@
     <string name="app_name">Multi Module</string>
     <string name="testLabel">TestLabel</string>
     <string name="proceedLabel">Proceed</string>
+    <string name="title_activity_authentication">AuthenticationActivity</string>
+    <string name="title_feature_authentication">Authentication</string>
+    <string name="label_feature_authentication">feature_authentication</string>
 </resources>

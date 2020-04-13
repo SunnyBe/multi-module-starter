@@ -3,6 +3,8 @@ package com.zistus.multimodule.di
 import com.zistus.core.di.CoreComponent
 import com.zistus.core.di.module.ViewModelModule
 import com.zistus.core.util.annotation.dagger.FeatureScope
+import com.zistus.multimodule.di.module.DbModule
+import com.zistus.multimodule.di.module.NetworkModule
 import com.zistus.multimodule.ui.home.HomeActivityBindingModule
 import com.zistus.multimodule.ui.launcher.LauncherActivityBindingModule
 import dagger.Component

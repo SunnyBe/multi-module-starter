@@ -19,7 +19,7 @@ class HomeActivity : BaseActivityNav<HomeViewModel>() {
 
     override val featureInjector: BaseFeatureInjector = AppFeatureInjector()
 
-    override fun getNavControllerId(): Int = R.id.nav_controller_view_tag // Todo Use the right nav
+    override fun getNavControllerId(): Int = R.id.nav_controller_view_tag
 
     private val param by intentExtra<Any>("param")
 

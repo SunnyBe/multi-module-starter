@@ -7,6 +7,7 @@ import com.zistus.core.ui.viewModel.BaseViewModel
 import com.zistus.core.util.misc.ErrorManager
 import com.zistus.multimodule.domain.test.TestRepository
 import kotlinx.coroutines.async
+import timber.log.Timber
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(private val testRepository: TestRepository) :
@@ -29,5 +30,11 @@ class HomeViewModel @Inject constructor(private val testRepository: TestReposito
                 data.data
             }
         }
+    }
+
+    fun navigateAuthentication(entry: String) = liveData {
+        navigateScreen("auth")
+        Timber.e("To Navigate to Authentication")
+        emit(Unit)
     }
 }

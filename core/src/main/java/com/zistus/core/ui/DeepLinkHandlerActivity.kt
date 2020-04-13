@@ -12,7 +12,7 @@ class DeepLinkHandlerActivity: Activity() {
         // Deep link for app module files
         const val AppDeeplinkModule = "$Prefix.multimodule.utils.AppDeeplinkModuleLoader"
         // Deep link for feature1 module
-//        const val DetailDeeplinkModule = "$Prefix.detail.utils.DetailDeeplinkModuleLoader"
+        const val AuthDeeplinkModule = "$Prefix.feature_authentication.utils.AuthDeeplinkModuleLoader"
     }
 
     // Load the deep link loader for a specified string module Todo: Move to extension file
@@ -27,7 +27,7 @@ class DeepLinkHandlerActivity: Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val loaders = listOfNotNull(AppDeeplinkModule.loadDeepLinkLoader())
+        val loaders = listOfNotNull(AppDeeplinkModule.loadDeepLinkLoader(), AuthDeeplinkModule.loadDeepLinkLoader())
         // DeepLinkDelegate for this list of loaders(AppDeeplinkModule, & others)
         // are generated at compile-time.
         val deepLinkDelegate = BaseDeepLinkDelegate(loaders)

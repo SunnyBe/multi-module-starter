@@ -18,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import com.zistus.core.ui.viewModel.BaseViewModel
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.layout_progress_infinite.view.*
+import timber.log.Timber
 import javax.inject.Inject
 
 abstract class BaseFragmentNav<FragmentBinding: ViewDataBinding, VM : BaseViewModel> : DaggerFragment() {
@@ -45,6 +46,10 @@ abstract class BaseFragmentNav<FragmentBinding: ViewDataBinding, VM : BaseViewMo
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         progressBar = fragmentBinding.root.progressBarInfinite
+        viewModel.intentNavigation.observe {
+            Timber.e("Should start intent ${it.type}")
+            activity?.startActivity(it)
+        }
     }
 
     // Show progress bar to user

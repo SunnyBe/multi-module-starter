@@ -25,7 +25,7 @@ object SDKVersions {
 
 object Versions {
     val kotlin = "1.3.71"
-    val gradle = "3.2.1"
+    val gradle = "3.6.2"
     val realm = "5.3.0"
     val retrofit = "2.6.0"
     val retrofit_logger = "3.10.0"
@@ -35,6 +35,7 @@ object Versions {
     val room_version = "2.2.5"
     val fragment_version = "1.2.0"
 
+    val databinding_version ="3.0.1"
     val koin_version = "2.0.1"
     val javaxInjectVersion = "1"
     val daggerVersion = "2.25.2"
@@ -102,6 +103,8 @@ object Deps {
     val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
     val kotlin_reflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
     val kotlin_jdk = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+
+    val bindingCompiler = "com.android.databinding:compiler:${Versions.databinding_version}"
 
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val retrofit_gson_converter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
