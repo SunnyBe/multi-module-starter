@@ -65,7 +65,9 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:gravity="center"
-                android:inputType="textPersonName" />
+                android:maxLines="1"
+                android:maxLength="20"
+                android:inputType="textCapSentences" />
 
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
