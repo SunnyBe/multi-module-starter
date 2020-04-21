@@ -2,7 +2,6 @@ package com.zistus.multimodule.ui.launcher
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import com.zistus.core.di.BaseFeatureInjector
 import com.zistus.core.ui.BaseActivity
 import com.zistus.multimodule.R

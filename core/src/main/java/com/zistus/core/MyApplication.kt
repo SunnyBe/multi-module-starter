@@ -1,5 +1,6 @@
 package com.zistus.core
 
+import android.content.Context
 import com.google.android.play.core.splitcompat.SplitCompat
 import com.zistus.core.di.BaseFeatureInjector
 import com.zistus.core.di.CoreComponent
@@ -10,7 +11,7 @@ import dagger.android.DispatchingAndroidInjector
 import timber.log.Timber
 import javax.inject.Inject
 
-class MyApplication : DaggerApplication() {
+open class MyApplication : DaggerApplication() {
     // Create core component instance from core component interface factory from CoreComponent
     val coreComponent: CoreComponent by lazy {
         DaggerCoreComponent.factory().create(this)
@@ -53,4 +54,9 @@ class MyApplication : DaggerApplication() {
         SplitCompat.install(this)
         coreComponent.inject(this)
     }
+
+//    override fun attachBaseContext(base: Context?) {
+//        super.attachBaseContext(base)
+//        SplitCompat.install(this)
+//    }
 }

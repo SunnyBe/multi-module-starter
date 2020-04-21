@@ -1,3 +1,5 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package com.zistus.core.util.ext
 
 import android.app.Activity

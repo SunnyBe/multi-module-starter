@@ -1,6 +1,7 @@
 package com.zistus.core.di.module
 
 import android.content.Context
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.zistus.core.MyApplication
 import com.zistus.core.util.misc.SplitInstallUtil
 import dagger.Module
@@ -18,4 +19,8 @@ class CoreModule {
     @Provides
     @Singleton
     fun provideSplitInstall(context: Context) = SplitInstallUtil(context)
+
+    @Provides
+    @Singleton
+    fun provideFirebaseAnalytics(context: Context) =  FirebaseAnalytics.getInstance(context)
 }

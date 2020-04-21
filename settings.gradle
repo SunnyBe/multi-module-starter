@@ -1,3 +1,4 @@
 rootProject.name='Multi Module'
 include ':app', ':buildSrc'
 include ':core'
+include ':feature_authentication'

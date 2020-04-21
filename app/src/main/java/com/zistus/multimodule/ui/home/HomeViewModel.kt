@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.zistus.core.entity.DataState
 import com.zistus.core.ui.viewModel.BaseViewModel
 import com.zistus.core.util.misc.ErrorManager
+import com.zistus.core.util.misc.ErrorType
 import com.zistus.multimodule.domain.test.TestRepository
 import kotlinx.coroutines.async
 import javax.inject.Inject
@@ -12,6 +13,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(private val testRepository: TestRepository) :
     BaseViewModel() {
     val loadValues = liveData {
+        showProgress("Please Wait")
         val value = fetchUsers().await()?.first()
         emit(value = value)
     }
@@ -25,7 +27,7 @@ class HomeViewModel @Inject constructor(private val testRepository: TestReposito
                 data.data
             }
             is DataState.Error -> {
-                renderError(ErrorManager("System", data.throwable.message, data.throwable))
+                renderError(ErrorManager(ErrorType.SYSTEM, data.throwable.message, data.throwable))
                 data.data
             }
         }

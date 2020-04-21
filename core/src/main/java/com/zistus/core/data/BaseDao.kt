@@ -10,9 +10,6 @@ import androidx.room.Update
  * Parent of all of dao classes
  */
 interface BaseDao<T> {
-
-//    suspend fun select(id: Long): T
-
     @Insert(onConflict = IGNORE)
     suspend  fun insert(t: T): Long
 
@@ -31,5 +28,4 @@ interface BaseDao<T> {
     @Delete
     fun delete(ts: List<T>)
 
-//    fun truncate()
 }

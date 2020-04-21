@@ -1,4 +1,4 @@
-package com.zistus.multimodule.di
+package com.zistus.multimodule.di.module
 
 import android.content.Context
 import androidx.room.Room
