@@ -3,8 +3,8 @@ package com.zistus.multimodule.ui.home
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.annotation.StringRes
 import com.zistus.core.ui.BaseFragmentNav
+import com.zistus.core.util.misc.ScreenPaths
 import com.zistus.core.util.misc.SplitInstallUtil
 import com.zistus.multimodule.R
 import com.zistus.multimodule.databinding.FragmentHomeBinding
@@ -22,7 +22,6 @@ class HomeFragment : BaseFragmentNav<FragmentHomeBinding, HomeViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        showProgress()
         viewModel.errorState.observe {
             hideProgress()
             Timber.e(it)
@@ -36,30 +35,23 @@ class HomeFragment : BaseFragmentNav<FragmentHomeBinding, HomeViewModel>() {
         testButton?.setOnClickListener {
             val entry = fragmentBinding.testEntry.text.toString().trim()
             if (entry.isNotBlank() && entry.isNotEmpty()) {
-                // Include another module for this condition with the entry from edit text
-                includeOnRequestModule(R.string.label_feature_authentication, entry)
+                showProgress("Loading Module")
+                val moduleName = resources.getString(R.string.label_feature_authentication)
+                // Include auth module
+                if (!splitInstallUtil.isModuleInstalled(moduleName = moduleName)) {
+                    viewModel.includeModule(
+                        splitInstallUtil,
+                        moduleName,
+                        ScreenPaths.AUTH_PATH,
+                        entry
+                    )
+                } else {
+                    viewModel.navigateScreen("auth/${entry}")
+                }
             } else {
                 navigateFragment(R.id.action_homeFragment_to_subHomeFragment)
             }
         }
     }
 
-    private fun includeOnRequestModule(@StringRes moduleName: Int, entry: String) {
-        splitInstallUtil.installModule(resources.getString(moduleName)) {
-            it?.let {
-                Toast.makeText(
-                    context,
-                    it.message ?: "Failed to load module",
-                    Toast.LENGTH_LONG
-                ).show()
-            } ?: kotlin.run {
-                viewModel.navigateScreen("auth/${entry}")
-                Toast.makeText(
-                    context,
-                    "Successfully loaded module",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        }
-    }
 }

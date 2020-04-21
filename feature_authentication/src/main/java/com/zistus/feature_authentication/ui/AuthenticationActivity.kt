@@ -1,6 +1,7 @@
 package com.zistus.feature_authentication.ui
 
 import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,6 +13,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.lifecycle.Observer
+import com.google.android.play.core.splitcompat.SplitCompat
 import com.zistus.core.di.BaseFeatureInjector
 import com.zistus.core.ui.BaseActivity
 import com.zistus.core.util.annotation.AppDeepLink
@@ -33,6 +35,12 @@ class AuthenticationActivity :
     override val viewModel: AuthenticationViewModel by viewModel()
 
     private val param by intentExtra<Any>("param")
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        // Emulates installation of on demand modules using SplitCompat.
+        SplitCompat.installActivity(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

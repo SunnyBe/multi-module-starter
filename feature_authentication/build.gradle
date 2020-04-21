@@ -20,51 +20,51 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api Deps.kotlin_jdk
-    api Deps.kotlin_stdlib
+    implementation Deps.kotlin_jdk
+    implementation Deps.kotlin_stdlib
     kapt Deps.bindingCompiler
     // Support
-    api SupportLibraries.appcompat
-    api SupportLibraries.core
-    api SupportLibraries.constraintLayout
-    api SupportLibraries.annotation
-    api SupportLibraries.recyclerview
+//    implementation SupportLibraries.appcompat
+//    implementation SupportLibraries.core
+//    implementation SupportLibraries.constraintLayout
+//    implementation SupportLibraries.annotation
+//    implementation SupportLibraries.recyclerview
     // UI
-    api SupportLibraries.materialDesign
+    implementation SupportLibraries.materialDesign
     // Navigation
-    api Deps.navigation
-    api Deps.nav_fragment
+    implementation Deps.navigation
+    implementation Deps.nav_fragment
     // Dagger
-    api Deps.dagger
-    api Deps.daggerAndroid
-    api Deps.daggerAndroidSupport
+    implementation Deps.dagger
+    implementation Deps.daggerAndroid
+    implementation Deps.daggerAndroidSupport
     kapt Deps.daggerCompiler
     kapt Deps.daggerAndroidProcessor
     // Reactive
-    api Deps.coroutine
-    api Deps.coroutine_android
+    implementation Deps.coroutine
+    implementation Deps.coroutine_android
     // Network
-    api Deps.retrofit
-    api Deps.retrofit_gson_converter
-    api Deps.retrofit_http_logger
+    implementation Deps.retrofit
+    implementation Deps.retrofit_gson_converter
+    implementation Deps.retrofit_http_logger
     // Room
-    api Deps.room
-    api Deps.roomKtx
+    implementation Deps.room
+    implementation Deps.roomKtx
     kapt Deps.room_compiler
     // Lifecycle
-    api Deps.lifecycle_ext
-    api Deps.lifecycle_view_model
-    api Deps.lifecycle_livedata
+    implementation Deps.lifecycle_ext
+    implementation Deps.lifecycle_view_model
+    implementation Deps.lifecycle_livedata
     kapt Deps.lifecycle_compiler
     // Other
-    api Deps.timber
-    api Deps.deepLinkDispatch
+    implementation Deps.timber
+    implementation Deps.deepLinkDispatch
     kapt Deps.deepLinkDispatchProcessor
 
-    testApi TestDeps.junit
-    androidTestApi TestDeps.junit_x
-    androidTestApi TestDeps.espresso_core
+    testImplementation TestDeps.junit
+    androidTestImplementation TestDeps.junit_x
+    androidTestImplementation TestDeps.espresso_core
 
-    api project(Modules.core)
-    api project(Modules.app)
+    implementation project(Modules.core)
+    implementation project(Modules.app)
 }

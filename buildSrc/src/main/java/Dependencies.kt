@@ -4,11 +4,12 @@ import Versions.prefix_version
 
 object ApplicationId {
     val application_id = "com.zistus.multimodule"
+    val core_id = "com.zistus.core"
 }
 
 object Releases {
-    val version_code = 1
-    val version_name = "0.0.1"
+    val version_code = 4
+    val version_name = "0.0.4"
 }
 
 object Modules {
@@ -82,6 +83,7 @@ object Versions {
     val fragment_testing = "1.1.0"
 
     val crashlyticsVersion = "2.10.1"
+    val firebase_crashlytics_version = "17.0.0-beta04"
     val firebase_auth_version = "19.2.0"
     val firebase_db_version = "19.2.0"
     val firebase_firestore_version = "21.3.1"
@@ -89,6 +91,7 @@ object Versions {
     val firebase_analytics_version = "17.2.1"
     val gmsVersion = "16.0.0"
     val play_core_version = "1.7.1"
+    val firebase_core_version = "16.0.4"
     val anko_version = "0.10.8"
 }
 
@@ -169,9 +172,11 @@ object Deps {
 
     val cognito = "com.amazonaws:aws-android-sdk-cognitoidentityprovider:${Versions.cognitoVersion}"
     val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlyticsVersion}"
+    val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:${Versions.firebase_crashlytics_version}"
     val firebase_auth = "com.google.firebase:firebase-auth:${Versions.firebase_auth_version}"
     val google_location = "com.google.android.gms:play-services-location:${Versions.firebase_location_version}"
     val playCore = "com.google.android.play:core:${Versions.play_core_version}"
+    val firebaseCore = "com.google.firebase:firebase-core:${Versions.firebase_core_version}"
     val firebase_db = "com.google.firebase:firebase-database:${Versions.firebase_db_version}"
     val firebaseAnalytics = "com.google.firebase:firebase-analytics:${Versions.firebase_analytics_version}"
     val googlePlayLocation = "com.google.android.gms:play-services-location:${Versions.gmsVersion}"

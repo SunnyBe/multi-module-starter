@@ -15,7 +15,7 @@ class TestRepositoryImplementation(
     TestRepository {
     override suspend fun fetchUsers(): DataState<List<TestEntity.User>>  = withContext(Dispatchers.IO) {
         try {
-            DataState.Success(apiSource.users().map { it.toEntity() })
+            DataState.Success(apiSource.users().map { it.toEntity() }) as DataState<List<TestEntity.User>>
         } catch (ex: Throwable) {
             DataState.Error(ex, null) as DataState<List<TestEntity.User>>
         }
