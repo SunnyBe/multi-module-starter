@@ -8,8 +8,8 @@ object ApplicationId {
 }
 
 object Releases {
-    val version_code = 4
-    val version_name = "0.0.4"
+    val version_code = 5
+    val version_name = "0.0.5"
 }
 
 object Modules {
