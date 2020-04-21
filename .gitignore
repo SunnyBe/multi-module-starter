@@ -71,7 +71,7 @@ captures/
 
 # Freeline
 freeline.py
-freeline/git rm --cached
+freeline/
 freeline_project_description.json
 
 # fastlane
