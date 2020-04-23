@@ -54,4 +54,9 @@ class HomeFragment : BaseFragmentNav<FragmentHomeBinding, HomeViewModel>() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        hideProgress()
+    }
+
 }
