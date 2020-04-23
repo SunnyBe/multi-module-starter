@@ -12,6 +12,7 @@ class SplitInstallUtil(context: Context) {
 
     var splitInstallManager: SplitInstallManager =
         SplitInstallManagerFactory.create(context)
+    lateinit var installListener: SplitInstallStateUpdatedListener
 
     fun isModuleInstalled(moduleName: String): Boolean =
         splitInstallManager.installedModules.contains(moduleName)
@@ -42,6 +43,7 @@ class SplitInstallUtil(context: Context) {
 
     suspend fun includeModule(moduleName: String, splitInstallStateUpdatedListener: SplitInstallStateUpdatedListener): Task<Int> = withContext(Dispatchers.Main) {
         val request = buildRequest(moduleName)
+        installListener = splitInstallStateUpdatedListener
         splitInstallManager.registerListener(splitInstallStateUpdatedListener)
         splitInstallManager.startInstall(request)
     }
@@ -52,8 +54,8 @@ class SplitInstallUtil(context: Context) {
             .build()
     }
 
-    fun unregisterSplitListener(splitInstallStateUpdatedListener: SplitInstallStateUpdatedListener) {
-        splitInstallManager.unregisterListener(splitInstallStateUpdatedListener)
+    fun unregisterSplitListener() {
+        splitInstallManager.unregisterListener(installListener)
     }
 
     fun deferInstallModules(modules: List<String>) {

@@ -73,11 +73,11 @@ abstract class BaseViewModel : ViewModel() {
         this.entry = entry
         viewModelScope.launch {
             val task = splitInstallUtil.includeModule(moduleName, splitStateListener)
-            proceesTask(splitInstallUtil, task)
+            processTask(splitInstallUtil, task)
         }
     }
 
-    private fun proceesTask(
+    private fun processTask(
         splitInstallUtil: SplitInstallUtil,
         task: Task<Int>
     ) {
@@ -90,10 +90,6 @@ abstract class BaseViewModel : ViewModel() {
         task.addOnFailureListener {
             // dismiss and display error
             splitInstallException(splitInstallUtil, it)
-        }
-
-        task.addOnCompleteListener {
-            splitInstallUtil.unregisterSplitListener(splitStateListener)
         }
     }
 
@@ -167,6 +163,7 @@ abstract class BaseViewModel : ViewModel() {
             SplitInstallSessionStatus.INSTALLED -> {
                 removeProgress()
                 if (screenPath.isNotBlank()) navigateScreen("$screenPath/${entry}")
+//                splitInstallUtil.unregisterSplitListener()
             }
             SplitInstallSessionStatus.PENDING -> {
                 showProgress("Loading Module")

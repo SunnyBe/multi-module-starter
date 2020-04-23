@@ -67,6 +67,7 @@ dependencies {
     implementation Deps.dagger
     implementation Deps.daggerAndroid
     implementation Deps.daggerAndroidSupport
+    implementation 'com.google.firebase:firebase-core:16.0.4'
     kapt Deps.daggerCompiler
     kapt Deps.daggerAndroidProcessor
     // Google/Firebase

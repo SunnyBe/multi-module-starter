@@ -15,7 +15,7 @@ class HomeViewModel @Inject constructor(private val testRepository: TestReposito
     val loadValues = liveData {
         showProgress("Please Wait")
         val value = fetchUsers().await()?.first()
-        emit(value = value)
+        emit(value = value).also { removeProgress() }
     }
 
     private fun fetchUsers() = viewModelScope.async{
