@@ -14,7 +14,7 @@ import dagger.android.support.DaggerAppCompatActivity
 import timber.log.Timber
 import javax.inject.Inject
 
-abstract class BaseActivityNav<VM: BaseViewModel>: DaggerAppCompatActivity() {
+abstract class BaseNavActivity<VM: BaseViewModel>: DaggerAppCompatActivity() {
 
     abstract val featureInjector: BaseFeatureInjector
 
@@ -43,7 +43,7 @@ abstract class BaseActivityNav<VM: BaseViewModel>: DaggerAppCompatActivity() {
         }
     }
 
-    fun <T> LiveData<T>.observe(block: (T) -> Unit) = observe(this@BaseActivityNav, Observer {
+    fun <T> LiveData<T>.observe(block: (T) -> Unit) = observe(this@BaseNavActivity, Observer {
         block(it)
     })
 }

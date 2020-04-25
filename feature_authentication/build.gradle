@@ -20,50 +20,28 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation Deps.kotlin_jdk
-    implementation Deps.kotlin_stdlib
+    implementation Deps.kotlinJdk
+    implementation Deps.kotlinStdlib
     kapt Deps.bindingCompiler
-    // Support
-//    implementation SupportLibraries.appcompat
-//    implementation SupportLibraries.core
-//    implementation SupportLibraries.constraintLayout
-//    implementation SupportLibraries.annotation
-//    implementation SupportLibraries.recyclerview
     // UI
     implementation SupportLibraries.materialDesign
-    // Navigation
-    implementation Deps.navigation
-    implementation Deps.nav_fragment
+
     // Dagger
-    implementation Deps.dagger
-    implementation Deps.daggerAndroid
-    implementation Deps.daggerAndroidSupport
     kapt Deps.daggerCompiler
     kapt Deps.daggerAndroidProcessor
-    // Reactive
-    implementation Deps.coroutine
-    implementation Deps.coroutine_android
-    // Network
-    implementation Deps.retrofit
-    implementation Deps.retrofit_gson_converter
-    implementation Deps.retrofit_http_logger
+
     // Room
-    implementation Deps.room
-    implementation Deps.roomKtx
-    kapt Deps.room_compiler
+    kapt Deps.roomCompiler
     // Lifecycle
-    implementation Deps.lifecycle_ext
-    implementation Deps.lifecycle_view_model
-    implementation Deps.lifecycle_livedata
-    kapt Deps.lifecycle_compiler
+    kapt Deps.lifecycleCompiler
     // Other
     implementation Deps.timber
     implementation Deps.deepLinkDispatch
     kapt Deps.deepLinkDispatchProcessor
 
     testImplementation TestDeps.junit
-    androidTestImplementation TestDeps.junit_x
-    androidTestImplementation TestDeps.espresso_core
+    androidTestImplementation TestDeps.junitX
+    androidTestImplementation TestDeps.espressoCore
 
     implementation project(Modules.core)
     implementation project(Modules.app)

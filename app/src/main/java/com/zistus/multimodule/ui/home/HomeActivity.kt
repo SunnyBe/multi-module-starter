@@ -2,7 +2,7 @@ package com.zistus.multimodule.ui.home
 
 import android.os.Bundle
 import com.zistus.core.di.BaseFeatureInjector
-import com.zistus.core.ui.BaseActivityNav
+import com.zistus.core.ui.BaseNavActivity
 import com.zistus.core.util.annotation.AppDeepLink
 import com.zistus.core.util.annotation.WebDeepLink
 import com.zistus.core.util.ext.intentExtra
@@ -11,7 +11,7 @@ import com.zistus.multimodule.di.AppFeatureInjector
 
 @WebDeepLink("home/{param}")
 @AppDeepLink("home/{param}")
-class HomeActivity : BaseActivityNav<HomeViewModel>() {
+class HomeActivity : BaseNavActivity<HomeViewModel>() {
 
     override val layoutResId: Int = R.layout.activity_home
 
