@@ -1,6 +1,5 @@
 package com.zistus.core
 
-import android.content.Context
 import com.google.android.play.core.splitcompat.SplitCompat
 import com.zistus.core.di.BaseFeatureInjector
 import com.zistus.core.di.CoreComponent
@@ -8,7 +7,6 @@ import com.zistus.core.di.DaggerCoreComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import dagger.android.DispatchingAndroidInjector
-import timber.log.Timber
 import javax.inject.Inject
 
 open class MyApplication : DaggerApplication() {
