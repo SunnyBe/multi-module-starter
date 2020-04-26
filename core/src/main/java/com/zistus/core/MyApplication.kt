@@ -52,9 +52,4 @@ open class MyApplication : DaggerApplication() {
         SplitCompat.install(this)
         coreComponent.inject(this)
     }
-
-//    override fun attachBaseContext(base: Context?) {
-//        super.attachBaseContext(base)
-//        SplitCompat.install(this)
-//    }
 }
