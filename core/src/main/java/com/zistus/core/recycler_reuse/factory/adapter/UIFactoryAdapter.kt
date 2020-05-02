@@ -8,6 +8,9 @@ import com.zistus.core.recycler_reuse.factory.models.UIField
 
 open class UIFactoryAdapter(private val uiModels: MutableList<UIField>, private var factoryEventListener: FactoryEventListener? = null): RecyclerView.Adapter<UIFactoryViewHolder>() {
 
+    override fun getItemViewType(position: Int): Int {
+        return uiModels[position].layout
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UIFactoryViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)

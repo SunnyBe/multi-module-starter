@@ -15,6 +15,10 @@ abstract class AuthenticationActivityBindingModule {
     @ContributesAndroidInjector(modules = [AuthenticationViewModelBindingModule::class, AuthModule::class])
     abstract fun contributeAuthenticationActivity(): AuthenticationActivity
 
+
+    @ContributesAndroidInjector(modules = [AuthenticationViewModelBindingModule::class, AuthModule::class])
+    abstract fun contributeAuthFragment(): AuthenticationFragment
+
     @Module
     abstract class AuthenticationViewModelBindingModule {
         @Binds

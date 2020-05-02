@@ -34,7 +34,7 @@ class HomeFragment : BaseFragmentNav<FragmentHomeBinding, HomeViewModel>() {
 
         testButton?.setOnClickListener {
             val entry = fragmentBinding.testEntry.text.toString().trim()
-            if (entry.isNotBlank() && entry.isNotEmpty() && entry.equals("Admin")) {
+            if (entry.isNotBlank() && entry.isNotEmpty()) {
                 showProgress("Loading Module")
                 val moduleName = resources.getString(R.string.label_feature_authentication)
                 // Include auth module
