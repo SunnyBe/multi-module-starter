@@ -9,7 +9,7 @@ import com.zistus.core.recycler_reuse.factory.interfaces.TextWatcherAdapter
 import com.zistus.core.recycler_reuse.factory.models.UIField
 import kotlinx.android.synthetic.main.item_name.view.*
 
-class NameField(
+data class NameField(
     var hint: String = "",
     var text: String = "",
     var inputType: Int = InputType.TYPE_CLASS_TEXT,
