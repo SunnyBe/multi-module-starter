@@ -2,8 +2,6 @@ package com.zistus.core.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,11 +12,9 @@ import dagger.android.support.DaggerAppCompatActivity
 import timber.log.Timber
 import javax.inject.Inject
 
-abstract class BaseActivity<Binding: ViewDataBinding?, VM: BaseViewModel>: DaggerAppCompatActivity() {
+abstract class BaseActivity<VM: BaseViewModel>: DaggerAppCompatActivity() {
 
     abstract val featureInjector: BaseFeatureInjector
-
-    abstract val layoutResId: Int   // Specify the layout id for the extending class
 
     abstract val viewModel: VM  // Specify the viewModel for this activity
 
@@ -27,13 +23,9 @@ abstract class BaseActivity<Binding: ViewDataBinding?, VM: BaseViewModel>: Dagge
 
     inline fun <reified T : BaseViewModel> viewModel() = viewModels<T> { viewModelFactory }
 
-    private val binding: Binding by lazy { DataBindingUtil.setContentView<Binding>(this, layoutResId) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         (application as MyApplication).addModuleInjector(featureInjector)   // Add this
         super.onCreate(savedInstanceState)
-        setContentView(layoutResId)
-        binding?.lifecycleOwner = this
         viewModel.intentNavigation.observe {
             Timber.d("Navigate ${it.data}")
             startActivity(it)
