@@ -64,7 +64,6 @@ class CameraFeatureHelper(val context: Context) {
         }
     }
 
-
     /** Create a file Uri for saving an image or video */
     private fun getOutputMediaFileUri(type: Int): Uri {
         return Uri.fromFile(getOutputMediaFile(type))
@@ -109,5 +108,10 @@ class CameraFeatureHelper(val context: Context) {
     fun takePicture(camera: Camera?) {
         // get an image from the camera
         camera?.takePicture(null, null, mPicture)
+    }
+
+    fun releaseCamera(camera: Camera?): Camera? {
+        camera?.release() // release the camera for other applications
+        return null
     }
 }

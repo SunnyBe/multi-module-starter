@@ -64,11 +64,6 @@ class NewDocFragment : BaseFragmentNav<NewDocViewModel>() {
 
     override fun onPause() {
         super.onPause()
-        releaseCamera()
-    }
-
-    private fun releaseCamera() {
-        camera?.release() // release the camera for other applications
-        camera = null
+        camera = cameraFeature.releaseCamera(camera)
     }
 }
