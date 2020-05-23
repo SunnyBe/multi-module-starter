@@ -10,9 +10,16 @@
         <action
             android:id="@+id/action_homeFragment_to_subHomeFragment"
             app:destination="@id/subHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_newDocFragment"
+            app:destination="@id/newDocFragment" />
     </fragment>
     <fragment
         android:id="@+id/subHomeFragment"
         android:name="com.zistus.multimodule.ui.home.SubHomeFragment"
         android:label="SubHomeFragment" />
+    <fragment
+        android:id="@+id/newDocFragment"
+        android:name="com.zistus.multimodule.ui.newdoc.NewDocFragment"
+        android:label="NewDocFragment" />
 </navigation>

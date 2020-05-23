@@ -3,6 +3,7 @@ package com.zistus.multimodule.ui.home
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.zistus.core.ui.BaseFragmentNav
 import com.zistus.core.util.misc.ScreenPaths
 import com.zistus.core.util.misc.SplitInstallUtil
@@ -18,6 +19,10 @@ class HomeFragment : BaseFragmentNav<HomeViewModel>() {
 
     @Inject
     lateinit var splitInstallUtil: SplitInstallUtil
+
+    private fun makeNewDoc() {
+        findNavController().navigate(R.id.newDocFragment)
+    }
 
     private fun includeModule() {
         val entry = testEntry.text.toString().trim()
@@ -53,7 +58,8 @@ class HomeFragment : BaseFragmentNav<HomeViewModel>() {
         }
 
         testButton?.setOnClickListener {
-            includeModule()
+//            includeModule()
+            makeNewDoc()
         }
     }
 

@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import com.zistus.core.di.module.ViewModelModule
 import com.zistus.core.util.annotation.dagger.FeatureScope
 import com.zistus.core.util.annotation.dagger.ViewModelKey
+import com.zistus.multimodule.ui.newdoc.NewDocFragment
+import com.zistus.multimodule.ui.newdoc.NewDocViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -23,12 +25,21 @@ abstract class HomeActivityBindingModule {
     @ContributesAndroidInjector(modules = [HomeViewModelBindingModule::class, HomeModule::class])
     abstract fun contributeSubHomeFragment(): SubHomeFragment
 
+    @ContributesAndroidInjector(modules = [HomeViewModelBindingModule::class, HomeModule::class])
+    abstract fun contributeNewDocFragment(): NewDocFragment
+
     @Module
     abstract class HomeViewModelBindingModule {
         @Binds
         @IntoMap
         @ViewModelKey(HomeViewModel::class)
         abstract fun bindHomeViewModel(homeViewModel: HomeViewModel): ViewModel
+
+        @Binds
+        @IntoMap
+        @ViewModelKey(NewDocViewModel::class)
+        abstract fun bindNewDocViewModel(viewModel: NewDocViewModel): ViewModel
+
     }
 
     @Module
